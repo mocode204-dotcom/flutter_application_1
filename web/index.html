@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <base href="$FLUTTER_BASE_HREF">
+  <base href="/flutter_application_1/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -16,8 +16,28 @@
 
   <title>HTI Smart App</title>
   <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = null;
+  </script>
+  <script src="flutter.js" defer></script>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download flutter.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
